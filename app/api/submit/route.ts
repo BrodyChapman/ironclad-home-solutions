@@ -1,10 +1,12 @@
 import { Resend } from "resend"
 import { NextRequest, NextResponse } from "next/server"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+export const dynamic = "force-dynamic"
+
 const LEAD_EMAIL = process.env.LEAD_EMAIL ?? "matthew_zacarias@yahoo.com"
 
 export async function POST(request: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
   const body = await request.json()
   const { fullName, email, phone, address } = body
 
